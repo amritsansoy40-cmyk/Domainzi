@@ -445,3 +445,28 @@
 </body>
 </html>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+<!-- Google Sign-In Button Container -->
+<div id="g_id_onload"
+     data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse">
+</div>
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="sign_in_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
+
+<!-- JavaScript to handle the response -->
+<script>
+  function handleCredentialResponse(response) {
+    // यहाँ response.credential के अंदर यूजर की टोकन आईडी मिलेगी
+    console.log("Encoded JWT ID token: " + response.credential);
+    
+    // आप इसे डिकोड करके यूजर का नाम या ईमेल निकाल सकते हैं
+    // उदाहरण के लिए एक बेसिक अलर्ट या लॉजिक लिख सकते हैं:
+    alert("Google Sign-In सफल रहा!");
+  }
+</script>

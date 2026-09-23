@@ -279,3 +279,83 @@
     <button onclick="simulateLogin()" style="background:#007bff; color:white; border:none; padding:8px 15px; border-radius:4px; margin-top:10px; cursor:pointer;">Login</button>
   </div>
 </div>
+<!-- Search Bar (अगर आपकी नेविगेशन बार में ऐड करना है) -->
+<div style="background:#111; padding:10px; text-align:center;">
+  <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Artworks या Products खोजें..." style="padding:8px; border-radius:20px; border:none; width:80%;">
+</div>
+
+<!-- Guest Banner -->
+<div id="guestBanner" style="background:#fff3cd; color:#856404; padding:10px; text-align:center; font-size:14px;">
+  👀 आप Guest मोड में हैं। खरीदने के लिए 
+  <button onclick="openLoginModal()" style="background:#007bff; color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Log In</button> करें।
+</div>
+
+<!-- Marketplace Products (Sample Items) -->
+<div style="padding:20px; display:flex; gap:10px; justify-content:center;">
+  <div class="product-card" data-title="pencil sketch art drawing" style="border:1px solid #ddd; padding:10px; border-radius:8px; background:#fff;">
+    <h4>Pencil Art 🎨</h4>
+    <p>Price: ₹500</p>
+    <button onclick="handleBuyAction('Pencil Art')" style="background:#28a745; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer;">Buy Now</button>
+  </div>
+
+  <div class="product-card" data-title="second hand bicycle bike cycle" style="border:1px solid #ddd; padding:10px; border-radius:8px; background:#fff;">
+    <h4>Old Bicycle 🚲</h4>
+    <p>Price: ₹2,000</p>
+    <button onclick="handleBuyAction('Old Bicycle')" style="background:#28a745; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer;">Buy Now</button>
+  </div>
+</div>
+
+<!-- Login Popup (Modal Window) -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:white; padding:20px; border-radius:10px; text-align:center; width:260px; position:relative;">
+    <span onclick="closeLoginModal()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px; font-weight:bold;">&times;</span>
+    <h3>Domainzi Login 🔐</h3>
+    <p style="font-size:12px; color:#666;">खरीदने या पोस्ट करने के लिए लॉगिन करें</p>
+    <input type="text" placeholder="Username / Email" style="width:90%; padding:8px; margin:5px 0; border:1px solid #ccc; border-radius:4px;"><br>
+    <input type="password" placeholder="Password" style="width:90%; padding:8px; margin:5px 0; border:1px solid #ccc; border-radius:4px;"><br>
+    <button onclick="simulateLogin()" style="background:#007bff; color:white; border:none; padding:8px 15px; border-radius:4px; margin-top:10px; cursor:pointer;">Login</button>
+  </div>
+</div><script>
+  let isLoggedIn = false;
+
+  // 1. Search Functionality
+  function searchProducts() {
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    let cards = document.querySelectorAll('.product-card');
+
+    cards.forEach(card => {
+      let title = card.getAttribute('data-title').toLowerCase();
+      if (title.includes(input)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  // 2. Buy Action & Login Check
+  function handleBuyAction(itemName) {
+    if (!isLoggedIn) {
+      alert("चीज़ें खरीदने के लिए पहले Login करें!");
+      openLoginModal();
+    } else {
+      alert(`🎉 Aapne ${itemName} khareedne ke liye request bhej di hai!`);
+    }
+  }
+
+  // 3. Login Modal Controls
+  function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+  }
+
+  function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+  }
+
+  function simulateLogin() {
+    isLoggedIn = true;
+    document.getElementById('guestBanner').style.display = 'none';
+    closeLoginModal();
+    alert("Login Successful! 🎉 Ab aap shopping kar sakte hain.");
+  }
+</script>

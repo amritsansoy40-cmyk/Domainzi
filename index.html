@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Marketplace</title>
+    <!-- CSS file ko yahan link karte hain -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>Art & Second-Hand Marketplace</h1>
+        <button onclick="openLoginModal()">Login with OTP</button>
+    </nav>
+
+    <div class="container">
+        <!-- Item Form -->
+        <div class="card">
+            <h2>Apni Cheez ya Drawing Bechein</h2>
+            <form id="productForm">
+                <input type="text" id="title" placeholder="Title" required>
+                <textarea id="description" placeholder="Description" required></textarea>
+                <input type="number" id="price" placeholder="Price (₹)" required>
+                <select id="category">
+                    <option value="drawing">Drawing / Artwork</option>
+                    <option value="second-hand">Second-Hand Item</option>
+                </select>
+                <input type="text" id="image" placeholder="Image URL" required>
+                <input type="text" id="sellerPhone" placeholder="Mobile Number" required>
+                <button type="submit" class="btn-primary">List Item</button>
+            </form>
+        </div>
+
+        <!-- Product Feed -->
+        <div class="feed">
+            <h2>Available Items</h2>
+            <div id="productList" class="grid"></div>
+        </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div id="otpModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>OTP Login</h3>
+            <div id="phoneStep">
+                <input type="text" id="phoneInput" placeholder="Mobile Number">
+                <button onclick="sendOTP()" class="btn-green">Send OTP</button>
+            </div>
+            <div id="verifyStep" class="hidden">
+                <input type="text" id="otpInput" placeholder="Enter 4-digit OTP">
+                <button onclick="verifyOTP()" class="btn-primary">Verify & Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript file ko yahan link karte hain -->
+    <script src="script.js"></script>
+</body>
+</html>

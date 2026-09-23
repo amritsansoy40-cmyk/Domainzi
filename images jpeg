@@ -1,0 +1,18 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "pencil sketch art drawing",
+      "name": "Pencil Art 🎨",
+      "price": "₹500",
+      "image": "art.jpg"
+    },
+    {
+      "id": 2,
+      "title": "second hand bicycle bike cycle",
+      "name": "Old Bicycle 🚲",
+      "price": "₹2,000",
+      "image": "cycle.jpg"
+    }
+  ]
+}
